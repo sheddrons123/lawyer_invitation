@@ -37,13 +37,13 @@ updateSlide();  // 초기 슬라이드와 버튼 상태 설정
   const container = document.getElementById('map');
   if (container) {
     const options = {
-      center: new kakao.maps.LatLng(37.491931, 127.022782),
-      level: 3
+      center: new kakao.maps.LatLng(37.501114, 127.011597),
+      level: 5
     };
 
     const map = new kakao.maps.Map(container, options);
     const marker = new kakao.maps.Marker({
-      position: new kakao.maps.LatLng(37.491931, 127.022782)
+      position: new kakao.maps.LatLng(37.501114, 127.011597)
     });
     marker.setMap(map);
   }
