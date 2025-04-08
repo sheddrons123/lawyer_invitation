@@ -1,6 +1,14 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+function setRealViewportHeight() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+window.addEventListener('resize', setRealViewportHeight);
+setRealViewportHeight();
+
+  
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
 const slides = document.querySelectorAll(".slide");
