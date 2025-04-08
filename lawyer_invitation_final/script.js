@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
 const slides = document.querySelectorAll(".slide");
+const slider = document.querySelector(".slider");
 let currentSlide = 0;
 
 function updateSlide() {
@@ -32,6 +33,31 @@ nextBtn.addEventListener("click", () => {
 
 updateSlide();  // 초기 슬라이드와 버튼 상태 설정
 
+  let startX = 0;
+  let endX = 0;
+
+  slider.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  slider.addEventListener("touchend", (e) => {
+    endX = e.changedTouches[0].clientX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const threshold = 50; // 최소 스와이프 거리
+    const deltaX = endX - startX;
+
+    if (Math.abs(deltaX) > threshold) {
+      if (deltaX > 0 && currentSlide > 0) {
+        currentSlide--;
+      } else if (deltaX < 0 && currentSlide < slides.length - 1) {
+        currentSlide++;
+      }
+      updateSlide();
+    }
+  }
 
   // 지도 초기화
   const container = document.getElementById('map');
