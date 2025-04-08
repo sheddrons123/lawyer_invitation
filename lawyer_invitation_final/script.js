@@ -38,7 +38,7 @@ updateSlide();  // 초기 슬라이드와 버튼 상태 설정
   if (container) {
     const options = {
       center: new kakao.maps.LatLng(37.501114, 127.011597),
-      level: 5
+      level: 6
     };
 
     const map = new kakao.maps.Map(container, options);
