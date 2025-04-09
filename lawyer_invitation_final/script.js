@@ -43,12 +43,29 @@ updateSlide();  // 초기 슬라이드와 버튼 상태 설정
 
   let startX = 0;
   let endX = 0;
+  let isTouchOnMap = false;
 
+  // 맵 요소를 찾아둔다
+  const mapElement = document.getElementById("map");
+
+  if (mapElement) {
+    mapElement.addEventListener("touchstart", () => {
+      isTouchOnMap = true;
+    });
+    mapElement.addEventListener("touchend", () => {
+      isTouchOnMap = false;
+    });
+  }
+
+
+  // 기존 슬라이더 스와이프 이벤트
   slider.addEventListener("touchstart", (e) => {
+    if (isTouchOnMap) return; // 맵에서 터치 중이면 무시
     startX = e.touches[0].clientX;
   });
-
+  
   slider.addEventListener("touchend", (e) => {
+    if (isTouchOnMap) return; // 맵에서 터치 중이면 무시
     endX = e.changedTouches[0].clientX;
     handleSwipe();
   });
